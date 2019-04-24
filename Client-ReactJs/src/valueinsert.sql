@@ -1,0 +1,15 @@
+-- INSERT INTO `
+-- library_spring`.`book
+-- `
+-- (`book_id`, `bookisbn`, `book_name`) VALUES
+-- ('002', 'Test', 'Test');
+-- INSERT INTO `
+-- library_spring`.`book
+-- `
+-- (`book_id`, `bookisbn`, `book_name`) VALUES
+-- ('003', 'Test', 'Test');
+-- INSERT INTO `
+-- library_spring`.`book
+-- `
+-- (`book_id`, `bookisbn`, `book_name`) VALUES
+-- ('004', 'Test', 'Test');
