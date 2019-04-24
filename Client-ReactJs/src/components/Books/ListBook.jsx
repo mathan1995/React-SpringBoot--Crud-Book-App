@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+// import { Link } from "react-router-dom";
 
 class ListBook extends React.Component {
   constructor(props) {
@@ -9,6 +10,13 @@ class ListBook extends React.Component {
 
     this.deleteBook = this.deleteBook.bind(this);
     this.refreshBook = this.refreshBook.bind(this);
+    this.routeAddBook = this.routeAddBook.bind(this);
+  }
+
+  //REDIRECT PAGE
+  routeAddBook() {
+    let path = `/AddBook`;
+    this.props.history.push(path);
   }
 
   componentDidMount() {
@@ -49,8 +57,12 @@ class ListBook extends React.Component {
       <div className="col-sm-12">
         <br />
         <h3 align="center">LIST-BOOKS</h3>
-        <div className="container">
-          <button className="btn btn-success" type="submit">
+        <div className="container" onLoad={this.refreshBook}>
+          <button
+            className="btn btn-success"
+            type="submit"
+            onClick={this.routeAddBook}
+          >
             <i className="fa fa-plus"> Add</i>
           </button>
           <br />

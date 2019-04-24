@@ -11,6 +11,7 @@ class Bookindex extends Component {
           <Switch>
             <Route path="/" exact component={ListBook} />
             <Route path="/AddBook" exact component={AddBook} />
+            <Route path="/BackBookList" exact component={ListBook} />
           </Switch>
         </>
       </Router>
