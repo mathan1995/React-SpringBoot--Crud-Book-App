@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-// import { Link } from "react-router-dom";
 
 class ListBook extends React.Component {
   constructor(props) {
@@ -24,6 +23,10 @@ class ListBook extends React.Component {
       this.setState({ books: response.data });
       // console.table(response.data);
       console.warn("Books Service is working");
+      this.interval = setInterval(
+        () => this.setState({ time: Date.now() }),
+        1000
+      );
     });
 
     // CALLING REFRESH BOOK METHOD
@@ -38,6 +41,12 @@ class ListBook extends React.Component {
     });
   }
   /*END OF REFRESH METHOD */
+
+  //Route Edit BOOK
+  routeEditBook() {
+    let pathedit = `/EditBook`;
+    this.props.history.push(pathedit);
+  }
 
   //DELETE-METHOD 1 = WORKING
   deleteBook(id) {
@@ -85,7 +94,13 @@ class ListBook extends React.Component {
                   <td>{book.bookName}</td>
                   <td>
                     <button className="btn btn-primary" type="submit">
-                      <i className="fa fa-edit"> Edit</i>
+                      <i
+                        className="fa fa-edit"
+                        onClick={() => this.routeEditBook(book.bookId)}
+                      >
+                        {" "}
+                        Edit
+                      </i>
                     </button>
                     &nbsp;
                     <button
