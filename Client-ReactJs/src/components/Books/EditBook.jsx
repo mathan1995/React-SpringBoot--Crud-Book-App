@@ -5,8 +5,14 @@ class EditBook extends Component {
   constructor(props) {
     super(props);
     this.state = { books: [], name: null };
-    this.state = { bookId: "", bookISBN: "", bookName: "" };
-    this.handleChange = this.handleChange.bind(this);
+    this.state.books = {
+      bookId: this.props.match.params.txtid,
+      bookISBN: "",
+      bookName: ""
+    };
+    this.handleChangeid = this.handleChangeid.bind(this);
+    this.handleChangename = this.handleChangename.bind(this);
+    this.handleChangeisbn = this.handleChangeisbn.bind(this);
     this.routeListBook = this.routeListBook.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -14,27 +20,44 @@ class EditBook extends Component {
   componentDidMount() {
     axios
       .get(
-        "http://localhost:8080/library/findAll" + this.props.match.params.txtid
+        "http://localhost:8080/library/geBookById" +
+          this.props.match.params.txtid
       )
       .then(result => {
-        // console.log(result);
+        console.log(result);
         this.setState({
-          bookId: result.txtid,
-          bookISBN: result.txtbookisbn,
-          bookName: result.txtbookname
+          bookId: result.data.txtid,
+          bookISBN: result.data.txtbookisbn,
+          bookName: result.data.txtbookname
         });
       });
   }
 
-  handleChange(event) {
-    const state = this.state;
-    state[event.target.txtid] = event.target.value;
-    this.setState(state);
+  //GET ID METHOD
+  handleChangeid(e) {
+    this.setState({
+      txtbookid: e.target.value
+    });
+  }
+
+  //GET ISBN METHOD
+  handleChangeisbn(f) {
+    this.setState({
+      txtbookisbn: f.target.value
+    });
+  }
+
+  //GET NAME METHOD
+  handleChangename(g) {
+    this.setState({
+      txtbookname: g.target.value
+    });
   }
 
   //ON SUBMIT FORM METHOD
   onSubmit(e) {
     e.preventDefault();
+
     const update = {
       bookId: this.state.txtbookid,
       bookISBN: this.state.txtbookisbn,
@@ -46,17 +69,12 @@ class EditBook extends Component {
       }
     });
 
-    // this.setState({
-    //   bookId: res.txtbookid,
-    //   bookISBN: res.txtbookisbn,
-    //   bookName: res.txtbookname
-    // });
     this.routeListBook();
   }
 
   //BACK BOOK LIST
   routeListBook() {
-    let path = `/BackBookList`;
+    let path = `/`;
     this.props.history.push(path);
   }
 
@@ -72,7 +90,7 @@ class EditBook extends Component {
           >
             <i className="fa fa-arrow-circle-left  "> Back</i>
           </button>
-          <h3 align="center">ADD-BOOKS</h3>
+          <h3 align="center">EDIT-BOOKS</h3>
         </div>
 
         <Formik>
@@ -83,8 +101,8 @@ class EditBook extends Component {
                 className="form-control"
                 type="text"
                 name="txtid"
-                value={this.state.txtid}
-                onChange={this.handleChange}
+                value={this.state.bookId}
+                onChange={this.handleChangeid}
                 placeholder="Boook Id Here"
               />
             </fieldset>
@@ -95,7 +113,7 @@ class EditBook extends Component {
                 type="text"
                 name="txtbookisbn"
                 value={this.state.txtbookisbn}
-                onChange={this.handleChange}
+                onChange={this.handleChangeisbn}
                 placeholder="Book ISBN Here"
               />
             </fieldset>
@@ -106,7 +124,7 @@ class EditBook extends Component {
                 type="text"
                 name="txtbookname"
                 value={this.state.txtbookname}
-                onChange={this.handleChange}
+                onChange={this.handleChangename}
                 placeholder="Book Name Here"
               />
             </fieldset>

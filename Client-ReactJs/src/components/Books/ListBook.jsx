@@ -21,7 +21,7 @@ class ListBook extends React.Component {
   componentDidMount() {
     axios.get("http://localhost:8080/library/findAll").then(response => {
       this.setState({ books: response.data });
-      // console.table(response.data);
+      //console.table(response.data);
       console.warn("Books Service is working");
       this.interval = setInterval(
         () => this.setState({ time: Date.now() }),
@@ -98,7 +98,6 @@ class ListBook extends React.Component {
                         className="fa fa-edit"
                         onClick={() => this.routeEditBook(book.bookId)}
                       >
-                        {" "}
                         Edit
                       </i>
                     </button>

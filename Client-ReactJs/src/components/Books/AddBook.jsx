@@ -53,13 +53,9 @@ class AddBook extends Component {
       bookISBN: "",
       bookName: ""
     });
+
     this.routeListBook();
     this.refreshBook();
-  }
-  //BACK FUNCTION TO BOOK lIST
-  routeListBook() {
-    let path = `/BackBookList`;
-    this.props.history.push(path);
   }
 
   //REFRESH BOOK METHOD
@@ -72,7 +68,7 @@ class AddBook extends Component {
 
   //BACK FUNCTION TO BOOK lIST
   routeListBook() {
-    let path = `/BackBookList`;
+    let path = `/`;
     this.props.history.push(path);
   }
 
@@ -93,7 +89,7 @@ class AddBook extends Component {
         </div>
 
         <Formik>
-          <Form className="container">
+          <Form className="container" onSubmit={this.onSubmit}>
             <fieldset>
               <label>Book Id</label>
               <Field
@@ -101,8 +97,8 @@ class AddBook extends Component {
                 type="text"
                 name="txtid"
                 value={this.state.txtid}
-                onChange={this.handleChangetxtid}
-                placeholder="Book Id"
+                onChange={this.handleChangeid}
+                placeholder="Boook Id Here"
               />
             </fieldset>
             <fieldset className="form-group">
@@ -113,7 +109,7 @@ class AddBook extends Component {
                 name="txtbookisbn"
                 value={this.state.txtbookisbn}
                 onChange={this.handleChangeisbn}
-                placeholder="Book ISBN"
+                placeholder="Book ISBN Here"
               />
             </fieldset>
             <fieldset className="form-group">
@@ -123,6 +119,7 @@ class AddBook extends Component {
                 type="text"
                 name="txtbookname"
                 value={this.state.txtbookname}
+                onChange={this.handleChangename}
                 placeholder="Book Name Here"
               />
             </fieldset>
@@ -131,7 +128,6 @@ class AddBook extends Component {
               value="Submit"
               type="submit"
               align="center"
-              onClick={this.onSubmit}
             >
               <i className="fa fa-plus"> Add</i>
             </button>
