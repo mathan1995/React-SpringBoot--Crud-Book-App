@@ -6,7 +6,7 @@ class EditBook extends Component {
     super(props);
     this.state = { books: [], name: null };
     this.state.books = {
-      bookId: this.props.match.params.txtid,
+      bookId: this.props.match.params.id,
       bookISBN: "",
       bookName: ""
     };
@@ -20,15 +20,14 @@ class EditBook extends Component {
   componentDidMount() {
     axios
       .get(
-        "http://localhost:8080/library/geBookById" +
-          this.props.match.params.txtid
+        "http://localhost:8080/library/geBookById/" + this.props.match.params.id
       )
       .then(result => {
-        console.log(result);
+        console.table(result);
         this.setState({
-          bookId: result.data.txtid,
-          bookISBN: result.data.txtbookisbn,
-          bookName: result.data.txtbookname
+          id: result.data.bookId,
+          txtbookisbn: result.data.bookISBN,
+          txtbookname: result.data.bookName
         });
       });
   }
@@ -59,7 +58,7 @@ class EditBook extends Component {
     e.preventDefault();
 
     const update = {
-      bookId: this.state.txtbookid,
+      bookId: this.state.id,
       bookISBN: this.state.txtbookisbn,
       bookName: this.state.txtbookname
     };
@@ -100,10 +99,11 @@ class EditBook extends Component {
               <Field
                 className="form-control"
                 type="text"
-                name="txtid"
-                value={this.state.bookId}
+                name="id"
+                value={this.state.id}
                 onChange={this.handleChangeid}
                 placeholder="Boook Id Here"
+                disabled
               />
             </fieldset>
             <fieldset className="form-group">

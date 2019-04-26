@@ -6,7 +6,6 @@ class ListBook extends React.Component {
   constructor(props) {
     super(props);
     this.state = { books: [], name: null };
-
     this.deleteBook = this.deleteBook.bind(this);
     this.refreshBook = this.refreshBook.bind(this);
     this.routeAddBook = this.routeAddBook.bind(this);
@@ -23,10 +22,6 @@ class ListBook extends React.Component {
       this.setState({ books: response.data });
       //console.table(response.data);
       console.warn("Books Service is working");
-      this.interval = setInterval(
-        () => this.setState({ time: Date.now() }),
-        1000
-      );
     });
 
     // CALLING REFRESH BOOK METHOD
@@ -43,9 +38,10 @@ class ListBook extends React.Component {
   /*END OF REFRESH METHOD */
 
   //Route Edit BOOK
-  routeEditBook() {
-    let pathedit = `/EditBook`;
-    this.props.history.push(pathedit);
+  routeEditBook(id) {
+    // let pathedit = `/EditBook`;
+    // this.props.history.push(pathedit);
+    this.props.history.push(`/EditBook/${id}`);
   }
 
   //DELETE-METHOD 1 = WORKING
