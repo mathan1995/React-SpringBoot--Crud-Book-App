@@ -65,6 +65,7 @@ class EditBook extends Component {
     axios.put("http://localhost:8080/library/updateBook", update).then(res => {
       if (res.status === 200) {
         alert("Book update successfully.");
+        window.location.reload();
       }
     });
 

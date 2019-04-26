@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Formik, Form, Field } from "formik";
-
+import ListBook from "./ListBook";
 class AddBook extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,6 @@ class AddBook extends Component {
     this.handleChangeisbn = this.handleChangeisbn.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.routeListBook = this.routeListBook.bind(this);
-    this.refreshBook = this.refreshBook.bind(this);
   }
 
   //GET ID METHOD
@@ -44,9 +43,13 @@ class AddBook extends Component {
       bookISBN: this.state.txtbookisbn,
       bookName: this.state.txtbookname
     };
-    axios
-      .post("http://localhost:8080/library/saveBook", save)
-      .then(res => console.log(res.data));
+    axios.post("http://localhost:8080/library/saveBook", save).then(res => {
+      if (res.status === 200) {
+        alert("Book Added successfully.");
+        window.location.reload();
+        // ListBook.refreshBook();
+      }
+    });
 
     this.setState({
       bookId: "",
@@ -55,15 +58,6 @@ class AddBook extends Component {
     });
 
     this.routeListBook();
-    this.refreshBook();
-  }
-
-  //REFRESH BOOK METHOD
-  refreshBook() {
-    axios.get("http://localhost:8080/library/findAll").then(response => {
-      console.warn("Refresh Service is working");
-      this.setState({ books: response.data });
-    });
   }
 
   //BACK FUNCTION TO BOOK lIST
