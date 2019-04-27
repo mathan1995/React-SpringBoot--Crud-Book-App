@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Formik, Form, Field } from "formik";
-import ListBook from "./ListBook";
+import "react-s-alert/dist/s-alert-default.css";
+import "react-s-alert/dist/s-alert-css-effects/slide.css";
 class AddBook extends Component {
   constructor(props) {
     super(props);
@@ -45,9 +46,8 @@ class AddBook extends Component {
     };
     axios.post("http://localhost:8080/library/saveBook", save).then(res => {
       if (res.status === 200) {
-        alert("Book Added successfully.");
+        alert("Book Added successfully.!");
         window.location.reload();
-        // ListBook.refreshBook();
       }
     });
 

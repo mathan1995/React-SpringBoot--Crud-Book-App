@@ -20,7 +20,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.s-alert-box {
+  min-width: 250px;
+}
 
+.s-alert-close::before,
+.s-alert-close::after {
+  width: 2px;
+}
 .App-link {
   color: #61dafb;
 }
