@@ -19,9 +19,10 @@ You will also see any lint errors in the console.
 ###`localhost:8080 Started Library Application`
 It shows in the cmd or the thirdpary software cmder you are using
 
-###`Mapped Contents Local Directory`
+###`Actual Output`
 ![dddd](https://user-images.githubusercontent.com/30531450/56878260-cc6ba980-6a70-11e9-80d8-6ad56e2f4891.PNG)
-
+###`Mapped Contents Local Directory`
+<br /><br />
 ###`Find all Books available`<br/>
 http://localhost:8080/library/findAll<br/>
 ###`Find Book By id`<br/>
