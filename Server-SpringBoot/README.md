@@ -26,7 +26,7 @@ It shows in the cmd or the thirdpary software cmder you are using
 http://localhost:8080/library/findAll<br/>
 ###`Find Book By id`<br/>
 http://localhost:8080/library/geBookById/{id}<br/>
-###`Delete Book`<br/><br/>
+###`Delete Book`<br/>
 http://localhost:8080/library/deleteBook/{id}<br/>
 ###`Update Book`<br/>
 http://localhost:8080/library/updateBook<br/>
