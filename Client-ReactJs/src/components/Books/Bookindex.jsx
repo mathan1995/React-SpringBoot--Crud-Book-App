@@ -8,14 +8,12 @@ class Bookindex extends Component {
   render() {
     return (
       <Router>
-        <>
-          <Switch>
-            <Route path="/" exact component={ListBook} />
-            <Route path="/AddBook" exact component={AddBook} />
-            <Route path="/EditBook/:id" exact component={EditBook} />
-            <Route path="/BackBookList" exact component={ListBook} />
-          </Switch>
-        </>
+        <Switch>
+          <Route path="/" exact component={ListBook} />
+          <Route path="/AddBook" exact component={AddBook} />
+          <Route path="/EditBook/:id" exact component={EditBook} />
+          <Route path="/BackBookList" exact component={ListBook} />
+        </Switch>
       </Router>
     );
   }

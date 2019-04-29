@@ -5,7 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 class ListBook extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { books: [], name: null };
+    this.state = { books: [], name: null, query: "" };
     this.deleteBook = this.deleteBook.bind(this);
     this.refreshBook = this.refreshBook.bind(this);
     this.routeAddBook = this.routeAddBook.bind(this);
@@ -75,6 +75,7 @@ class ListBook extends React.Component {
           <br />
 
           <br />
+
           <table className="table">
             <thead>
               <tr>
