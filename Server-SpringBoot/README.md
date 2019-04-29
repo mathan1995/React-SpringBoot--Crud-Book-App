@@ -22,7 +22,7 @@ It shows in the cmd or the thirdpary software cmder you are using
 ## Actual Output
 ![dddd](https://user-images.githubusercontent.com/30531450/56878260-cc6ba980-6a70-11e9-80d8-6ad56e2f4891.PNG)
 ## Mapped Contents Local Directory
-<br /><br />
+
 ###`Find all Books available`<br/>
 http://localhost:8080/library/findAll<br/>
 ###`Find Book By id`<br/>
