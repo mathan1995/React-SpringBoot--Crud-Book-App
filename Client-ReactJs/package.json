@@ -10,7 +10,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "cors": "^2.8.5",
     "fetch-api": "0.0.2",
     "formik": "^1.5.2",
